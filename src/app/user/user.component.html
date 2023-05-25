@@ -1,15 +1,25 @@
 <app-form-layout>
-  <h1>Beneficiarios</h1>
-  <p>Por favor, agregue los beneficiarios para su nueva cuenta.</p>
-  <div class="beneficiaries-container">
-    <app-beneficiaries-form></app-beneficiaries-form>
-  </div>
-  <div class="buttons-container">
-    <button class="add-button">
-      <i class="fa-solid fa-plus"></i>
-      Agregar otro beneficiario
-    </button>
-    <p class="text-muted">5 beneficiarios como máximo</p>
-    <button class="continue-button">Continuar</button>
-  </div>
+  <ng-container>
+    <h1>Beneficiarios</h1>
+    <p>Por favor, agregue los beneficiarios para su nueva cuenta.</p>
+    <div class="beneficiaries-container">
+      <div class="beneficiary">
+        <app-beneficiaries-form></app-beneficiaries-form>
+      </div>
+      <div class="beneficiary">
+        <app-beneficiaries-form></app-beneficiaries-form>
+      </div>
+      <div class="beneficiary">
+        <app-beneficiaries-form></app-beneficiaries-form>
+      </div>
+    </div>
+    <div class="buttons-container">
+      <button class="add-button">
+        <i class="fa-solid fa-plus"></i>
+        Agregar otro beneficiario
+      </button>
+      <p class="text-muted">5 beneficiarios como máximo</p>
+      <button class="continue-button">Continuar</button>
+    </div>
+  </ng-container>
 </app-form-layout>

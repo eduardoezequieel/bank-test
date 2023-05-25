@@ -11,7 +11,16 @@ button {
 }
 
 .beneficiaries-container {
-  padding-block: 20px 10px;
+  padding-block: 10px 10px;
+
+  & > .beneficiary {
+    &:first-child {
+      border-top: 0;
+    }
+
+    padding-top: 15px;
+    border-top: 2px solid lighten($border, 15%);
+  }
 }
 
 .buttons-container {
