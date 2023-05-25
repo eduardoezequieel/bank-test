@@ -10,7 +10,7 @@ import { CustomValidators } from './helpers/percentage.validator';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-  parentForm = this.fb.group({}, { validators: CustomValidators.incompletePercentage });
+  parentForm = this.fb.group({}, { validators: CustomValidators.invalidPercentage });
   beneficiaries: Beneficiary[] = [];
 
   constructor(private readonly fb: FormBuilder) {}
@@ -37,27 +37,23 @@ export class UserComponent implements OnInit {
   }
 
   deleteBeneficiary(id: number): void {
-    if (this.beneficiaries.length === 1) {
-      Swal.fire({
-        title: 'Error',
-        text: 'Debes de tener al menos un beneficiario.',
-        icon: 'error',
-      });
-    } else {
-      Swal.fire({
-        title: 'Eliminar beneficiario',
-        text: '¿Estás seguro? No podrás revertir esta acción',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar',
-      }).then(({ isConfirmed }) => {
-        if (isConfirmed) {
-          this.beneficiaries = this.beneficiaries.filter((beneficiary) => beneficiary.id !== id);
-          this.parentForm.removeControl(`beneficiary${id}`);
-        }
-      });
+    if (id === 1) {
+      return;
     }
+
+    Swal.fire({
+      title: 'Eliminar beneficiario',
+      text: '¿Estás seguro? No podrás revertir esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then(({ isConfirmed }) => {
+      if (isConfirmed) {
+        this.beneficiaries = this.beneficiaries.filter((beneficiary) => beneficiary.id !== id);
+        this.parentForm.removeControl(`beneficiary${id}`);
+      }
+    });
   }
 
   onSubmit(): void {

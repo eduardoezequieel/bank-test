@@ -23,7 +23,7 @@
         <p>El campo es requerido.</p>
       </div>
     </div>
-    <button class="delete-button" type="button" (click)="onDelete()">
+    <button *ngIf="id !== 1" class="delete-button" type="button" (click)="onDelete()">
       <i class="fa-regular fa-trash-can"></i>
     </button>
   </div>
@@ -58,8 +58,8 @@
           }"
         ></i>
 
-        <div class="error-alert">
-          <p *ngIf="kinship!.touched && kinship!.errors?.['required']">El campo es requerido.</p>
+        <div *ngIf="kinship!.touched && kinship!.errors?.['required']" class="error-alert">
+          <p>El campo es requerido.</p>
         </div>
       </div>
     </div>
@@ -71,20 +71,19 @@
           maxlength="4"
           [ngClass]="{ 
             'valid-input': !percentage!.errors?.['required'], 
-            'invalid-input': percentage!.touched && percentage!.errors?.['required']
+            'invalid-input': percentage!.touched && percentage!.errors?.['required'] || invalidPercentage
           }"
         />
         <label
           [ngClass]="{ 
             'valid-label': !percentage!.errors?.['required'], 
-            'invalid-label': percentage!.touched && percentage!.errors?.['required']
+            'invalid-label': percentage!.touched && percentage!.errors?.['required'] || invalidPercentage
           }"
           >Porcentaje
         </label>
-        <div class="error-alert">
-          <p *ngIf="percentage!.touched && percentage!.errors?.['required']">
-            El campo es requerido.
-          </p>
+        <div *ngIf="percentage!.touched" class="error-alert">
+          <p *ngIf="percentage!.errors?.['required']">El campo es requerido.</p>
+          <p *ngIf="invalidPercentage">Porcentaje invalido.</p>
         </div>
       </div>
     </div>

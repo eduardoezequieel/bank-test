@@ -11,6 +11,7 @@ export class BeneficiariesFormComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   @Input() form!: FormGroup;
   @Input() id!: number;
+  @Input() invalidPercentage: boolean = false;
   @Output() idToBeDeleted = new EventEmitter<number>();
   @Output() formSubmitted = new EventEmitter<boolean>();
 
@@ -29,10 +30,14 @@ export class BeneficiariesFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.percentage!.valueChanges.subscribe((value: string) => {
       const newValue = value.replace(/[^0-9]/g, '');
-      this.percentage?.setValue(`${newValue}%`, { emitEvent: false });
+
+      if (newValue != '') {
+        this.percentage?.setValue(`${newValue}%`, { emitEvent: false });
+      } else {
+        this.percentage?.setValue(newValue, { emitEvent: false });
+      }
     });
   }
-
   onDelete(): void {
     this.idToBeDeleted.emit(this.id);
   }

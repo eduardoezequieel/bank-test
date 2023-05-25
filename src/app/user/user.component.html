@@ -8,6 +8,7 @@
           (idToBeDeleted)="deleteBeneficiary($event)"
           [form]="item.beneficiary"
           [id]="item.id"
+          [invalidPercentage]="parentForm.errors?.['invalidPercentage']"
           (formSubmitted)="onSubmit()"
         ></app-beneficiaries-form>
       </div>
@@ -23,9 +24,12 @@
         Agregar otro beneficiario
       </button>
       <p class="text-muted">5 beneficiarios como máximo</p>
+      <p *ngIf="parentForm.touched && parentForm.errors?.['invalidPercentage']" class="text-error">
+        Recuerde que la suma de los porcentajes de sus beneficiarios debe de ser equivalente al 100%
+      </p>
       <button
         class="continue-button"
-        [disabled]="!parentForm.valid || parentForm.errors?.['incompletePercentage']"
+        [disabled]="!parentForm.valid || parentForm.errors?.['invalidPercentage']"
         type="submit"
       >
         Continuar

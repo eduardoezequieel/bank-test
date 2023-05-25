@@ -15,6 +15,10 @@ button {
   color: $border;
 }
 
+.text-error {
+  color: $red-lighter;
+}
+
 .beneficiaries-container {
   padding-block: 10px 10px;
 
@@ -23,7 +27,7 @@ button {
       border-top: 0;
     }
 
-    padding-top: 15px;
+    padding-block: 20px;
     border-top: 2px solid lighten($border, 15%);
   }
 }
