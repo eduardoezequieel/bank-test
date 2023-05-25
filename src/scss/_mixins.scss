@@ -1,0 +1,9 @@
+@mixin responsive($px) {
+  @media (max-width: $px) {
+    @content;
+  }
+}
+
+@mixin transition {
+  transition: all 0.2s ease-in-out;
+}
