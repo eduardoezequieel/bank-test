@@ -1,0 +1,65 @@
+@import 'mixins', 'colors', 'variables';
+
+h1,
+p,
+button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-muted {
+  color: $border;
+}
+
+.beneficiaries-container {
+  padding-block: 20px 10px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-button {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  height: 15px;
+  background-color: transparent;
+  border: 0;
+  color: $primary-lighter;
+  font-weight: bold;
+  cursor: pointer;
+
+  i {
+    padding-top: 0.2rem;
+    font-size: 10px;
+  }
+
+  &:hover {
+    color: $primary;
+    @include transition;
+  }
+}
+
+.continue-button {
+  margin-block: 20px 15px;
+  width: 100%;
+  padding-block: 15px;
+  border-radius: 12px;
+  background-color: $secondary;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  color: $primary;
+
+  &:hover {
+    background-color: darken($secondary, 10%);
+    @include transition;
+  }
+
+  &:focus {
+    outline: 1px solid $primary;
+  }
+}

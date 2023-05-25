@@ -1,0 +1,25 @@
+<form action="">
+  <div class="form-control">
+    <input type="text" required />
+    <label>Nombre completo</label>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-control">
+        <select name="kinship" id="kinship-select" required>
+          <option value disabled selected></option>
+          <option value="Padre">Padre</option>
+        </select>
+        <label for="kinship-select">Parentesco</label>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-control">
+        <input type="number" min="0" max="100" required />
+        <label>Porcentaje</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-control"></div>
+</form>

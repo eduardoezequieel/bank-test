@@ -1,0 +1,93 @@
+@import 'colors', 'mixins';
+
+$gap-between-controls: 12px;
+
+.row {
+  display: flex;
+  height: min-content;
+  gap: $gap-between-controls;
+
+  .col {
+    height: fit-content;
+    flex: 1;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $gap-between-controls;
+
+  .form-control {
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+
+    input,
+    select {
+      appearance: none;
+      font-size: 100%;
+      padding: 1.2em;
+      outline: none;
+      border: 2px solid $border;
+      background-color: transparent;
+      border-radius: 12px;
+      width: 100%;
+      color: gray;
+    }
+
+    option:first-child {
+      display: none;
+    }
+
+    label {
+      font-size: 100%;
+      position: absolute;
+      left: 0;
+      padding: 1.1em;
+      margin-left: 0.5em;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      background: transparent;
+      color: $border;
+    }
+
+    i {
+      font-size: 100%;
+      position: absolute;
+      right: 0;
+      padding: 1.3em;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      background: transparent;
+      color: $border;
+    }
+
+    @mixin changeLabelStyles($color) {
+      transform: translateY(-50%) scale(0.9);
+      margin: 0em;
+      margin-left: 0.4em;
+      padding: 0.1em 0.7em;
+      color: $color;
+      background-color: white;
+      font-weight: bold;
+    }
+
+    @mixin changeInputStyles($color) {
+      border-color: $color;
+      @include transition;
+    }
+
+    :is(input:focus, select:focus, select:valid, input:valid) ~ label {
+      @include changeLabelStyles($primary);
+    }
+
+    :is(input:focus, select:focus, select:valid, input:valid) ~ i {
+      color: $primary;
+    }
+
+    :is(input:focus, select:focus, select:valid, input:valid) {
+      @include changeInputStyles($primary);
+    }
+  }
+}
