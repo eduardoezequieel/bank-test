@@ -11,13 +11,13 @@ $gap-between-controls: 12px;
   background-color: transparent;
   border: 0;
   font-size: 18px;
-  color: #f04b6a;
+  color: $red-lighter;
   cursor: pointer;
   border-radius: 6px;
   padding: 12px;
 
   &:hover {
-    background-color: #fddce3;
+    background-color: $red-transparent;
     color: red;
     @include transition;
   }
@@ -110,16 +110,50 @@ form {
       @include transition;
     }
 
-    :is(input:focus, select:focus, select:valid, input:valid) ~ label {
+    :is(input:focus, select:focus) ~ label {
       @include changeLabelStyles($primary);
     }
 
-    :is(input:focus, select:focus, select:valid, input:valid) ~ i {
+    :is(input:focus, select:focus) ~ i {
       color: $primary;
     }
 
-    :is(input:focus, select:focus, select:valid, input:valid) {
+    :is(input:focus, select:focus) {
       @include changeInputStyles($primary);
     }
+
+    .valid-label {
+      @include changeLabelStyles($primary);
+    }
+
+    .valid-icon {
+      color: $primary;
+    }
+
+    .valid-input {
+      @include changeInputStyles($primary);
+    }
+
+    .invalid-label {
+      @include changeLabelStyles($red-lighter);
+    }
+
+    .invalid-icon {
+      color: $red-lighter;
+    }
+
+    .invalid-input {
+      @include changeInputStyles($red-lighter);
+    }
   }
+}
+
+.error-alert {
+  display: flex;
+  color: $red-lighter;
+  width: 100%;
+  margin-top: 5px;
+  height: 18px;
+  font-size: 14px;
+  padding-left: 10px;
 }

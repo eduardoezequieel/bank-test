@@ -2,5 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // overflow-x: hidden;
+}
+
+.swal2-title,
+.swal2-html-container,
+button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

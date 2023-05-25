@@ -6,6 +6,11 @@ button {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.no-beneficiaries-message {
+  color: $primary;
+  padding-block: 20px;
+}
+
 .text-muted {
   color: $border;
 }
@@ -34,6 +39,7 @@ button {
   gap: 15px;
   align-items: center;
   height: 15px;
+  width: fit-content;
   background-color: transparent;
   border: 0;
   color: $primary-lighter;
@@ -48,6 +54,17 @@ button {
   &:hover {
     color: $primary;
     @include transition;
+  }
+
+  &:focus {
+    outline: none;
+    color: $primary;
+    @include transition;
+  }
+
+  &:disabled {
+    color: $gray;
+    cursor: not-allowed;
   }
 }
 
@@ -69,6 +86,13 @@ button {
   }
 
   &:focus {
-    outline: 1px solid $primary;
+    outline: none;
+    background-color: darken($secondary, 10%);
+    @include transition;
+  }
+
+  &:disabled {
+    background-color: $gray;
+    cursor: not-allowed;
   }
 }
