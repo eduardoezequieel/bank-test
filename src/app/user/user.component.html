@@ -1,39 +1,37 @@
-<app-form-layout>
-  <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
-    <h1>Beneficiarios</h1>
-    <p>Por favor, agregue los beneficiarios para su nueva cuenta.</p>
-    <div class="beneficiaries-container">
-      <div class="beneficiary" *ngFor="let item of beneficiaries">
-        <app-beneficiaries-form
-          (idToBeDeleted)="deleteBeneficiary($event)"
-          [form]="item.beneficiary"
-          [id]="item.id"
-          [invalidPercentage]="parentForm.errors?.['invalidPercentage']"
-          (formSubmitted)="onSubmit()"
-        ></app-beneficiaries-form>
-      </div>
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+  <h1>Beneficiarios</h1>
+  <p>Por favor, agregue los beneficiarios para su nueva cuenta.</p>
+  <div class="beneficiaries-container">
+    <div class="beneficiary" *ngFor="let item of beneficiaries">
+      <app-beneficiaries-form
+        (idToBeDeleted)="deleteBeneficiary($event)"
+        [form]="item.beneficiary"
+        [id]="item.id"
+        [invalidPercentage]="parentForm.errors?.['invalidPercentage']"
+        (formSubmitted)="onSubmit()"
+      ></app-beneficiaries-form>
     </div>
-    <div class="buttons-container">
-      <button
-        class="add-button"
-        type="button"
-        (click)="addBeneficiary()"
-        [disabled]="beneficiaries.length === 5"
-      >
-        <i class="fa-solid fa-plus"></i>
-        Agregar otro beneficiario
-      </button>
-      <p class="text-muted">5 beneficiarios como máximo</p>
-      <p *ngIf="parentForm.touched && parentForm.errors?.['invalidPercentage']" class="text-error">
-        Recuerde que la suma de los porcentajes de sus beneficiarios debe de ser equivalente al 100%
-      </p>
-      <button
-        class="continue-button"
-        [disabled]="!parentForm.valid || parentForm.errors?.['invalidPercentage']"
-        type="submit"
-      >
-        Continuar
-      </button>
-    </div>
-  </form>
-</app-form-layout>
+  </div>
+  <div class="buttons-container">
+    <button
+      class="add-button"
+      type="button"
+      (click)="addBeneficiary()"
+      [disabled]="beneficiaries.length === 5"
+    >
+      <i class="fa-solid fa-plus"></i>
+      Agregar otro beneficiario
+    </button>
+    <p class="text-muted">5 beneficiarios como máximo</p>
+    <p *ngIf="parentForm.touched && parentForm.errors?.['invalidPercentage']" class="text-error">
+      Recuerde que la suma de los porcentajes de sus beneficiarios debe de ser equivalente al 100%
+    </p>
+    <button
+      class="continue-button"
+      [disabled]="!parentForm.valid || parentForm.errors?.['invalidPercentage']"
+      type="submit"
+    >
+      Continuar
+    </button>
+  </div>
+</form>
