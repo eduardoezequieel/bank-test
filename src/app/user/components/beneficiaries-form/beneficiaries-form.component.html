@@ -7,7 +7,7 @@
         id="full-name"
         [ngClass]="{ 
           'valid-input': !fullName!.errors?.['required'], 
-          'invalid-input': fullName!.touched && fullName!.errors?.['required'] || fullName!.errors?.['minlength']
+          'invalid-input': fullName!.touched && fullName!.errors
         }"
         maxlength="50"
       />
@@ -15,7 +15,7 @@
         for="full-name"
         [ngClass]="{ 
           'valid-label': !fullName!.errors?.['required'], 
-          'invalid-label': fullName!.touched && fullName!.errors?.['required'] || fullName!.errors?.['minlength']
+          'invalid-label': fullName!.touched && fullName!.errors
         }"
       >
         Nombre completo
