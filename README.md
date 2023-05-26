@@ -1,6 +1,6 @@
 # BankTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2. Here is a deploy of the project for you to interact with it https://bank-test-beryl.vercel.app/
 
 ## Development server
 
