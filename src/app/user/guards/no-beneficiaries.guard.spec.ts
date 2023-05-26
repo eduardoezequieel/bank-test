@@ -4,8 +4,8 @@ import { CanActivateFn } from '@angular/router';
 import { noBeneficiariesGuard } from './no-beneficiaries.guard';
 
 describe('noBeneficiariesGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => noBeneficiariesGuard(...guardParameters));
+  const executeGuard: CanActivateFn = (...guardParameters) =>
+    TestBed.runInInjectionContext(() => noBeneficiariesGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

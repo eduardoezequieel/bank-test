@@ -82,12 +82,14 @@
           type="text"
           formControlName="percentage"
           maxlength="4"
+          id="percentage"
           [ngClass]="{ 
             'valid-input': !percentage!.errors?.['required'], 
             'invalid-input': percentage!.touched && percentage!.errors?.['required'] || invalidPercentage
           }"
         />
         <label
+          for="percentage"
           [ngClass]="{ 
             'valid-label': !percentage!.errors?.['required'], 
             'invalid-label': percentage!.touched && percentage!.errors?.['required'] || invalidPercentage
