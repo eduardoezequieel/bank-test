@@ -14,7 +14,7 @@
     padding: 30px;
     width: 100%;
     @include responsive($sm) {
-      width: 500px;
+      width: 600px;
     }
   }
 
@@ -24,9 +24,5 @@
     border-radius: 12px;
     width: 100%;
     height: fit-content;
-
-    @include responsive($sm) {
-      width: 500px;
-    }
   }
 }

@@ -7,20 +7,23 @@
         id="full-name"
         [ngClass]="{ 
           'valid-input': !fullName!.errors?.['required'], 
-          'invalid-input': fullName!.touched && fullName!.errors?.['required']
+          'invalid-input': fullName!.touched && fullName!.errors?.['required'] || fullName!.errors?.['minlength']
         }"
+        maxlength="50"
       />
       <label
         for="full-name"
         [ngClass]="{ 
           'valid-label': !fullName!.errors?.['required'], 
-          'invalid-label': fullName!.touched && fullName!.errors?.['required']
+          'invalid-label': fullName!.touched && fullName!.errors?.['required'] || fullName!.errors?.['minlength']
         }"
       >
         Nombre completo
       </label>
-      <div class="error-alert" *ngIf="fullName!.touched && fullName!.errors?.['required']">
-        <p>El campo es requerido.</p>
+      <div class="error-alert" *ngIf="fullName!.touched">
+        <p *ngIf="fullName!.errors?.['required']">El campo es requerido.</p>
+        <p *ngIf="fullName!.errors?.['minlength']">El nombre es demasiado corto.</p>
+        <p *ngIf="fullName!.errors?.['pattern']">El nombre tiene caracteres no permitidos.</p>
       </div>
     </div>
     <button *ngIf="id !== 1" class="delete-button" type="button" (click)="onDelete()">
@@ -41,6 +44,16 @@
           <option value disabled selected></option>
           <option value="Padre">Padre</option>
           <option value="Madre">Madre</option>
+          <option value="Hijo">Hijo</option>
+          <option value="Hija">Hija</option>
+          <option value="Abuelo">Abuelo</option>
+          <option value="Abuela">Abuela</option>
+          <option value="Nieto">Nieto</option>
+          <option value="Nieta">Nieta</option>
+          <option value="Tío">Tío</option>
+          <option value="Tía">Tía</option>
+          <option value="Sobrino">Sobrino</option>
+          <option value="Sobrina">Sobrina</option>
         </select>
         <label
           for="kinship-select"

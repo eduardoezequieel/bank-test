@@ -5,17 +5,13 @@ import { UserRoutingModule } from './user-routing.module';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { BeneficiariesFormComponent } from './components/beneficiaries-form/beneficiaries-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShareService } from './services/share.service';
+import { ResultsComponent } from './pages/results/results.component';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
-  declarations: [UserComponent, BeneficiariesFormComponent],
-  imports: [
-    UserRoutingModule,
-    NgxMaskDirective,
-    NgxMaskPipe,
-    CommonModule,
-    ReactiveFormsModule,
-    
-  ],
-  providers: [provideNgxMask()],
+  declarations: [UserComponent, ResultsComponent, ResultComponent, BeneficiariesFormComponent],
+  imports: [UserRoutingModule, NgxMaskDirective, NgxMaskPipe, CommonModule, ReactiveFormsModule],
+  providers: [provideNgxMask(), ShareService],
 })
 export class UserModule {}

@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Beneficiary } from './interfaces/beneficiary.interface';
 import Swal from 'sweetalert2';
 import { CustomValidators } from './helpers/percentage.validator';
+import { Router } from '@angular/router';
+import { ShareService } from './services/share.service';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +15,11 @@ export class UserComponent implements OnInit {
   parentForm = this.fb.group({}, { validators: CustomValidators.invalidPercentage });
   beneficiaries: Beneficiary[] = [];
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private shareService: ShareService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.addBeneficiary();
@@ -25,7 +31,14 @@ export class UserComponent implements OnInit {
     }
 
     const beneficiary = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+      fullName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.pattern(/^[a-zA-ZáÁéÉíÍóÓúÚñÑ\s]+$/),
+        ],
+      ],
       kinship: ['', Validators.required],
       percentage: ['', Validators.required],
     });
@@ -61,6 +74,8 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    console.log(this.parentForm.value);
+    this.shareService.setData(this.parentForm.value);
+
+    this.router.navigate(['/user/results']);
   }
 }
